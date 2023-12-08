@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Consulta</title>
+    <link rel="stylesheet" type="text/css" href="/css/stylesConsult.css"/>
+</head>
+<body>
+<div class="grid">
+    <div class="item item-1">
+        <h1><a href="/" class="aref">Regresar</a> Registrar Consulta</h1>
+    </div>
+    <div class="item item-2">
+        <form th:action="@{/createDetail}" method="post" th:object="${newdetail}" class="formSave" id="createDetail">
+            <label>Diagnóstico:</label>
+            <input type="text" th:field="*{diagnosis}" required>
+
+            <label>Tratamiento:</label>
+            <input type="text" th:field="*{treatment}" required>
+            <button type="submit" form="createDetail" class="btn-submit">Agregar Detalle</button>
+
+        </form>
+
+        <table id="detailsTable">
+            <thead>
+            <tr>
+                <th>Diagnóstico</th>
+                <th>Tratamiento</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="detail : ${consultDetailsList}">
+                <td th:text="${detail.diagnosis}"></td>
+                <td th:text="${detail.treatment}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="item item-3">
+        <form th:action="@{/crearConsulta}" method="post" th:object="${consult}" class="formSave" id="createConsult">
+            <label>Paciente:</label>
+            <select th:field="*{patient.idPatient}" required="required">
+                <option th:each="patient : ${patients}" th:value="${patient.idPatient}">
+                    <span th:text="${patient.firstName}"></span>
+                    <span> </span>
+                    <span th:text="${patient.lastName}"></span>
+                </option>
+            </select>
+
+
+            <label>Médico:</label>
+            <select th:field="*{medic.idMedic}" required="required">
+                <option th:each="medic : ${medics}" th:value="${medic.idMedic}">
+                    <span th:text="${medic.firstName}"></span>
+                    <span> </span>
+                    <span th:text="${medic.lastName}"></span>
+                </option>
+            </select>
+
+
+            <label>Fecha y Hora:</label>
+            <input type="datetime-local" th:field="*{consultDate}" required>
+
+        </form>
+        <button type="submit" class="btn-submit" form="createConsult" onclick="addConsult()">Agregar Consulta
+        </button>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    function addConsult(){
+        window.open("Consulta Creada")
+    }
+</script>

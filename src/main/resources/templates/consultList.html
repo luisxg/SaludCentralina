@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Consulta</title>
+    <link rel="stylesheet" type="text/css" href="/css/stylesConsultList.css"/>
+</head>
+<body>
+<div class="grid">
+    <div class="item item-1">
+        <h1><a href="/" class="aref">Regresar</a> Listado de Consultas</h1>
+    </div>
+    <div class="item item-2">
+
+        <table id="detailsTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Medico</th>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Detalles</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${consultArray}">
+                <td th:text="${c.idConsult}"></td>
+                <td>
+                    <span th:text="${c.medic.firstName}"></span>
+                    <span th:text="${c.medic.lastName}"></span>
+                </td>
+
+                <td>
+                    <span th:text="${c.patient.firstName}"></span>
+                    <span th:text="${c.patient.lastName}"></span>
+                </td>
+
+                <td th:text="${c.consultDate}"></td>
+                <td>
+                    <table>
+                        <tr th:each="a: ${c.details}">
+                            <td>
+                                <span style="font-weight: bold;">Diagnóstico:</span>
+                                <span th:text="${a.diagnosis}"></span>
+                                <br/>
+                                <span style="font-weight: bold;">Tratamiento:</span>
+                                <span th:text="${a.treatment}"></span>
+                                <br/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

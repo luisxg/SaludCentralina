@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Médicos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+
+</head>
+<body>
+
+<div class="grid">
+
+    <div class="item item-1">
+        <h1><a href="/" class="aref">Regresar</a> Gestión de Médicos</h1>
+    </div>
+
+    <div class="item item-2">
+        <form th:action="@{/saveMedic}" method="post" th:object="${editedMedic}" class="formSave">
+
+            <input type="hidden" name="idMedic" th:field="*{idMedic}" />
+
+            <div class="form-group">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="ci">Cédula:</label>
+                <input type="text" id="ci" name="ci" th:field="*{ci}" required />
+            </div>
+
+            <button type="submit" class="btn-submit">Aceptar</button>
+        </form>
+
+    </div>
+
+    <div class="item item-3">
+        <table>
+            <thead>
+            <form th:action="@{/findByIdMedic}" method="get">
+                <label for="medicId">Buscar medico por ID:</label>
+                <input type="text" id="medicId" name="id">
+                <button type="submit">Buscar</button>
+            </form>
+            </thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="p : ${medicById != null} ? ${medicById} : ${medics}">
+                <td th:text="${p.idMedic}"></td>
+                <td th:text="${p.firstName}"></td>
+                <td th:text="${p.lastName}"></td>
+                <td th:text="${p.ci}"></td>
+                <td>
+                    <form th:action="@{/deleteMedic}" method="post">
+                        <input type="hidden" name="id" th:value="${p.idMedic}" />
+                        <button type="submit" class="btn-delete">Eliminar</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/editMedic}" method="get">
+                        <input type="hidden" name="id" th:value="${p.idMedic}" />
+                        <button type="submit">Editar</button>
+                    </form>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+    .aref {
+        color: white;
+        background-color: #7c7c7c;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .aref:hover {
+        background-color: #2f2f2f;
+    }
+    .item-1 {
+        background-color: #224c83;
+        color: white;
+    }
+</style>

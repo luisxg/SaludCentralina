@@ -1,0 +1,137 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 90px auto;
+    grid-template-columns: 0.5fr 1.5fr;
+    height: 100vh;
+}
+
+.item {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.item-1 {
+    grid-row: 1;
+    grid-column: span 2;
+
+}
+
+.item-2{
+    grid-row: 2;
+    grid-column: 1;
+    padding: 20px;
+}
+
+.item-3 {
+    grid-row: 2;
+    grid-column: 2;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Cambia el color del texto según tus preferencias */
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button.btn-submit {
+    background-color: #4CAF50; /* Cambia el color del botón según tus preferencias */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.btn-submit:hover {
+    background-color: #45a049; /* Cambia el color del botón al pasar el mouse */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50; /* Color de fondo para las celdas de encabezado */
+    color: white;
+}
+
+td {
+    background-color: #f5f5f5; /* Color de fondo para las celdas de datos */
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-delete{
+    background-color: #b42222;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: #8d1a1a;
+}
+
+button:hover {
+    background-color: #45a049;
+}
